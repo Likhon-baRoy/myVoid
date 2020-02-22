@@ -1,6 +1,5 @@
-#neofetch
-
 # Luke's config for the Zoomer Shell
+
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}"lidan"%{$fg[green]%}@%{$fg[blue]%}"art" %{$fg[magenta]%}~%{$fg[red]%}]%{$reset_color%}$%b "
 
@@ -12,14 +11,6 @@ autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-
-# no double entries in the shell history
-export HISTCONTROL="$HISTCONTROL erasedups:ignoreboth"
-
-# History in cache directory:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.cache/zsh/history
 
 # Include hidden files in autocomplete:
 _comp_options+=(globdots)
@@ -75,13 +66,6 @@ lfcd () {
 }
 
 bindkey -s '^o' 'lfcd\n'  # zsh
-
-# Control bindings for programs
-bindkey -s "^g" "lc\n"
-bindkey -s "^h" "history 1\n"
-
-# Enable searching through history
-bindkey '^R' history-incremental-pattern-search-backward
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
