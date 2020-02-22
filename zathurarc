@@ -1,0 +1,34 @@
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+
+set selection-clipboard clipboard
+set first-page-column 1:1
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+
+map u scroll half-up
+map [fullscreen] u scroll half-up
+
+
+unmap d
+map d scroll half-down
+map [fullscreen] d scroll half-down
+map D toggle_page_mode
+map [fullscreen] D toggle_page_mode
+
+
+unmap r
+map r reload
+map [fullscreen] r reload
+map R rotate
+map [fullscreen] R rotate
+map K zoom in
+map [fullscreen] K zoom in
+map J zoom out
+map [fullscreen] J zoom out
+map i recolor
+map [fullscreen] i recolor
+map p print
+map [fullscreen] p print

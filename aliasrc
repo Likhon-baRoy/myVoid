@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# for i in *.avi; do ffmpeg -i "$i" -vn "${i%.*}.mp4"; done
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	bat="cat /sys/class/power_supply/BAT?/capacity" \
+	ll="ls -A" \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -v" \
+	rmd="rm -Rv" \
+	mkd="mkdir -pv" \
+	yt="youtube-dl --add-metadata -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'" \
+	yta="yt -x -f bestaudio/best" \
+	ffmpeg="ffmpeg -hide_banner"
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi"
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	ka="killall" \
+	g="git" \
+	trem="transmission-remote" \
+	YT="youtube-viewer" \
+	sdn="sudo shutdown -h now" \
+	f="vifm" \
+	r="ranger" \
+	e="$EDITOR" \
+	v="vim" \
+	p="sudo pacman" \
+	xi="sudo xbps-install" \
+	xr="sudo xbps-remove -R" \
+	xq="xbps-query"
+
+# This alias is important. It enables the `pauseallmpv` command.
+alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
+
+# Some other stuff
+alias \
+	magit="nvim -c MagitOnly" \
+	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
+	bg="feh --randomize --bg-scale ~/Pictures/wallpapers/*" \
+	i3conf="vim ~/.config/i3/config" \
+	aliasrc="vim ~/.config/aliasrc" \
+        bashrc="vim ~/.bashrc" \
+        zshrc="vim ~/.zshrc" \
+	weath="less -S ~/.local/share/weatherreport" \
