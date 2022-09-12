@@ -1,28 +1,29 @@
 #!/bin/sh
 
+# Use neovim for vim if present.
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
 ###--- Enable Bangla Keybord ---###
+----------------JATIYO-----------------
 # localectl set-x11-keymap us,bd "" , grp:alt_space_toggle
 
-# Use neovim for vim if present.
-[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+----------------PROBHAT-----------------
+localctl set-x11-keymap us,bd '' ,probhat grp:alt_space_toggle
 
-# Use $XINITRC variable if file exists.
-[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
-
-# sudo not required for some system commands
-for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
-	alias $command="sudo $command"
-done; unset command
+# for file in *.flac; do ffmpeg -i $file -q:a 0 ${file:r}.opus; done
+# for i in *.avi; do ffmpeg -i "$i" -vn "${i%.*}.mp4"; done
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
+	bat="cat /sys/class/power_supply/BAT?/capacity" \
+	ll="ls -A" \
 	cp="cp -iv" \
 	mv="mv -iv" \
-	rm="rm -vI" \
-	bc="bc -ql" \
+	rm="rm -v" \
+	rmd="rm -Rv" \
 	mkd="mkdir -pv" \
-	yt="youtube-dl --add-metadata -i" \
-	yta="yt -x -f -i bestaudio/best" \
+	yt="youtube-dl --add-metadata -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'" \
+	yta="yt -x -i -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner"
 
 # Colorize commands when possible.
@@ -33,24 +34,33 @@ alias \
 	ccat="highlight --out-format=ansi"
 
 # These common commands are just too long! Abbreviate them.
+	#e="$EDITOR" \ this is optional
 alias \
 	ka="killall" \
 	g="git" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
-	bb="feh --randomize --bg-scale ~/Pictures/wallpapers/*" \
-	key="setxkbmap -layout us,bd -option grp:alt_space_toggle" \
-	sdn="shutdown -h now" \
-	e="$EDITOR" \
-	v="$EDITOR" \
-	p="pacman" \
+	sdn="sudo shutdown -h now" \
+	f="vifm" \
+	r="ranger" \
+	e="emacs -nw" \
+	v="nvim" \
+	q="exit" \
+	p="sudo pacman" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
-	z="zathura"
+	xq="xbps-query"
 
+# This alias is important. It enables the `pauseallmpv` command.
+alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
+
+# Some other stuff
 alias \
-	lf="lfub" \
 	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
-	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
+	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
+	bg="feh --randomize --bg-scale ~/Pics/wallpapers/*" \
+	i3conf="vim ~/.config/i3/config" \
+	aliasrc="vim ~/.config/aliasrc" \
+        bashrc="vim ~/.bashrc" \
+        zshrc="vim ~/.zshrc" \
+	weath="less -S ~/.local/share/weatherreport"
