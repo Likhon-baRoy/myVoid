@@ -8,7 +8,7 @@ command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 # localectl set-x11-keymap us,bd "" , grp:alt_space_toggle
 
 ----------------PROBHAT-----------------
-localctl set-x11-keymap us,bd '' ,probhat grp:alt_space_toggle
+# localectl set-x11-keymap us,bd '' ,probhat grp:alt_space_toggle
 
 # for file in *.flac; do ffmpeg -i $file -q:a 0 ${file:r}.opus; done
 # for i in *.avi; do ffmpeg -i "$i" -vn "${i%.*}.mp4"; done
