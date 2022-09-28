@@ -1,0 +1,32 @@
+#+title: Basic Needs for Configurations
+
+* Tasks
+** DONE Start new org file for tutorial
+	CLOSED: [2022-09-27 Tue 2:16pm]
+** TODO : keyboard configuration
+*** TODO : key-map of keyboard
+	- =xmodmap= is a program. Through this program you can change your key-map.
+      Here's an example of changing key-map using xmodmap.
+      
+      #+begin_src sh
+        keycode 9 = Escape
+        keycode 37 = Escape
+        keycode 66 = Control_L
+        clear Lock
+        add Control = Control_L
+      #+end_src
+
+	- Now save this file in .Xmodmap  your home direcory and Run with: xmodmap .Xmodmap
+      And you're all set to go.
+
+*** TODO : change keyboard-layout based on language
+	- there are many command to do this kind of jobs.
+      among them most populer are =setxkbmap= AND =localectl=
+
+      #+begin_src sh
+        localectl set-x11-keymap us,bd '' ,probhat grp:lctrl_lwin_toggle
+      #+end_src
+
+#+begin_comment
+  *bold* /italic/	+strike-through+ =beacon=
+#+end_comment
