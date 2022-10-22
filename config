@@ -1,0 +1,2 @@
+# format with playlist_index
+-o "%(playlist_index)s-%(title)s.%(ext)s"
