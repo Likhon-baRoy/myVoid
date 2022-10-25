@@ -3,13 +3,6 @@
 # Use neovim for vim if present.
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
-###--- Enable Bangla Keybord ---###
-----------------JATIYO-----------------
-# localectl set-x11-keymap us,bd "" , grp:alt_space_toggle
-
-----------------PROBHAT-----------------
-# localectl set-x11-keymap us,bd '' ,probhat grp:alt_space_toggle
-
 # for file in *.flac; do ffmpeg -i $file -q:a 0 ${file:r}.opus; done
 # for i in *.avi; do ffmpeg -i "$i" -vn "${i%.*}.mp4"; done
 
@@ -23,8 +16,13 @@ alias \
 	rmd="rm -Rv" \
 	mkd="mkdir -pv" \
 	yt="youtube-dl --add-metadata -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'" \
-	yta="yt -x -i -f bestaudio/best" \
+	yta="youtube-dl --add-metadata -x -i -f bestaudio/best" \
+	ytdl="yt-dlp -f 'bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080][ext=mp4] / bv*+ba/b'" \
+   	audio="yt-dlp -f 'ba' -x --audio-format opus" \
 	ffmpeg="ffmpeg -hide_banner"
+	jatiyo="localectl set-x11-keymap us,bd "" , grp:alt_space_toggle" \
+   	probhat="localectl set-x11-keymap us,bd '' ,probhat grp:alt_shift_toggle" \
+    	xx="ffmpeg -f pulse -ac 2 -i default -f x11grab -r 30 -s 1280x800 -i :0.0 -acodec pcm_s16le -vcodec libx264 -preset ultrafast -threads 0 -y ~/yt/recorded/$(date +%y-%m-%d).mkv"
 
 # Colorize commands when possible.
 alias \
@@ -35,18 +33,25 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 	#e="$EDITOR" \ this is optional
-alias \
-	ka="killall" \
-	g="git" \
+alias \	
+	key="setxkbmap -layout us,bd '', probhat grp:shift_caps_toggle" \
+	bb="feh --randomize --bg-scale ~/Pictures/wallpapers/*" \
+	sdn="sudo shutdown -h now" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
-	sdn="sudo shutdown -h now" \
+	ka="killall" \
+	g="git" \
 	f="vifm" \
+	lf="lfub" \
 	r="ranger" \
-	e="emacs -nw" \
+	e="$EDITOR" \
 	v="nvim" \
+	z="zathura" \
 	q="exit" \
-	p="sudo pacman" \
+	p="pacman" \
+	pi="pacman -S" \
+	px="pacman -Rs" \
+	pu="pacman -Syyu" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query"
@@ -57,10 +62,6 @@ alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
 # Some other stuff
 alias \
 	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
-	bg="feh --randomize --bg-scale ~/Pics/wallpapers/*" \
-	i3conf="vim ~/.config/i3/config" \
-	aliasrc="vim ~/.config/aliasrc" \
-        bashrc="vim ~/.bashrc" \
-        zshrc="vim ~/.zshrc" \
-	weath="less -S ~/.local/share/weatherreport"
+	aliasrc="vim ~/.config/shell/aliasrc" \
+	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
+	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
