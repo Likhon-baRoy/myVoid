@@ -8,6 +8,7 @@ map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
 
 set sandbox none
+set window-title-basename "true"
 set selection-clipboard clipboard
 set first-page-column 1:1
 set statusbar-h-padding 0
@@ -64,6 +65,9 @@ set guioptions ""
 set recolor "true"
 set recolor-keephue true
 
+#added later
+set recolor-darkcolor           "#dcd7ba"
+
 # gruvbox
 #set recolor-lightcolor \#2B2A27
 #set recolor-darkcolor   \#f1f1f0
@@ -73,7 +77,7 @@ set recolor-keephue true
 #set recolor-lightcolor   \#282a36
 #set default-bg \#282a36
 
-# zathurarc-dark
+# ZATHURARC-DARK
 
 # set font "inconsolata 10"
 # set default-bg "#000000" #00
