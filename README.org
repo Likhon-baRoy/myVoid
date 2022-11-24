@@ -4,7 +4,7 @@
 #+DATE:   2022 Nov 24
 #+TAGS:
 
-* 🌿 INFORMATION
+* 🌿 Information
 
 Thanks for dropping by! This is my personal repository of my dotfiles. \\
 
